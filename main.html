@@ -1,0 +1,128 @@
+main.html code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindSpace — Student Wellness</title>
+<link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">✿</div> MindSpace</div>
+    <nav class="nav" aria-label="Main navigation">
+      <button class="active" data-view="home">⌂ &nbsp; Overview</button>
+      <button data-view="planner">☷ &nbsp; Study rescue</button>
+      <button data-view="support">♡ &nbsp; AI support</button>
+      <button data-view="calm">☼ &nbsp; Calm corner</button>
+      <button data-view="wellbeing">✦ &nbsp; Wellbeing</button>
+    </nav>
+    <div class="side-note"><strong>One step at a time.</strong><br>You don't need to solve everything today. Start with the next small thing.</div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div><div class="eyebrow">Your student wellbeing space</div><h1 id="pageTitle">A little space to breathe.</h1><div class="muted" id="todayText">Check in with yourself, then take the next small step.</div></div>
+      <div class="avatar" aria-label="Student profile">S</div>
+    </div>
+
+    <section class="view active" id="home">
+      <div class="welcome">
+        <div><div class="eyebrow">Welcome to MindSpace</div><h2>You matter more than your marks.</h2><p>Feeling overwhelmed doesn't mean you're failing. Let's make things feel a little more manageable, one step at a time.</p><button class="primary" data-go="calm">I need a moment →</button> <button class="secondary" data-go="planner">Plan my workload</button></div>
+        <div class="welcome-emoji" aria-hidden="true">🌱</div>
+      </div>
+      <div class="grid">
+        <article class="card span-8">
+          <div class="card-head"><div class="feature-head"><div class="icon-box">📚</div><div><h2>Academic pressure rescue</h2><div class="muted">Turn a mountain of work into a few clear steps.</div></div></div><span class="pill">01</span></div>
+          <div class="stat-row"><div class="stat"><strong id="taskCount">0</strong><span>Tasks planned</span></div><div class="stat"><strong id="doneCount">0</strong><span>Completed</span></div><div class="stat"><strong id="hoursCount">0h</strong><span>Planned effort</span></div></div>
+          <div style="margin-top:17px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700"><span>Today's progress</span><span id="progressLabel">0%</span></div><div class="progress"><div id="progressFill"></div></div></div>
+          <button class="secondary" data-go="planner">Open my study plan →</button>
+        </article>
+        <article class="card span-4">
+          <div class="card-head"><div class="feature-head"><div class="icon-box" style="background:var(--mint)">☁️</div><div><h2>Quick check-in</h2><div class="muted">How are you feeling?</div></div></div></div>
+          <div class="mood-options" id="homeMoods">
+            <button class="mood" data-mood="1" aria-label="Very low">😣<small>Low</small></button><button class="mood" data-mood="2" aria-label="Stressed">😟<small>Stressed</small></button><button class="mood" data-mood="3" aria-label="Okay">😐<small>Okay</small></button><button class="mood" data-mood="4" aria-label="Good">🙂<small>Good</small></button><button class="mood" data-mood="5" aria-label="Great">😄<small>Great</small></button>
+          </div>
+          <button class="primary" style="width:100%" id="saveMoodHome">Save check-in</button><p class="muted" style="font-size:12px;margin-bottom:0">No judgement. Your check-in is for reflection, not a diagnosis.</p>
+        </article>
+        <article class="card span-6">
+          <div class="card-head"><div class="feature-head"><div class="icon-box">💬</div><div><h2>Talk it through</h2><div class="muted">A supportive prompt to help you find a next step.</div></div></div></div>
+          <p class="muted">You don't have to explain everything perfectly. Start with what's on your mind.</p>
+          <button class="secondary" data-go="support">Open supportive chat →</button>
+        </article>
+        <article class="card span-6">
+          <div class="card-head"><div class="feature-head"><div class="icon-box" style="background:var(--peach)">🌬️</div><div><h2>Reset your mind</h2><div class="muted">Try a short guided breathing exercise.</div></div></div></div>
+          <p class="muted">Take a small pause before your next task. You can stop whenever you want.</p>
+          <button class="secondary" data-go="calm">Go to calm corner →</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="view" id="planner">
+      <div class="welcome"><div><div class="eyebrow">Feature 01</div><h2>Academic Pressure Rescue</h2><p>Write down what's weighing on you. We'll keep the list clear so you can focus on one manageable task at a time.</p></div><div class="welcome-emoji">🗂️</div></div>
+      <div class="grid">
+        <article class="card span-4"><h2>Add a task</h2><p class="muted">Keep tasks small and realistic.</p>
+          <form id="taskForm">
+            <div class="field"><label for="taskName">Task or assignment</label><input id="taskName" required maxlength="100" placeholder="e.g. Revise Unit 2"></div>
+            <div class="form-row"><div class="field"><label for="taskDate">Due date</label><input id="taskDate" type="date"></div><div class="field"><label for="taskHours">Effort (hours)</label><input id="taskHours" type="number" min="0.25" max="24" step="0.25" value="1" required></div></div>
+            <div class="field"><label for="taskPriority">Priority</label><select id="taskPriority"><option value="High">High — urgent</option><option value="Medium" selected>Medium — important</option><option value="Low">Low — when possible</option></select></div>
+            <button class="primary" type="submit" style="width:100%">＋ Add to plan</button>
+          </form>
+          <div class="notice" style="margin-top:15px">Tip: break big assignments into 20–40 minute chunks. Leave room for meals, rest and sleep.</div>
+        </article>
+        <article class="card span-8"><div class="card-head"><div><h2>Your workload</h2><div class="muted">Tick a task when you've completed it.</div></div><button class="plain" id="clearDone">Clear completed</button></div>
+          <div id="taskList" class="task-list"><div class="empty">No tasks yet. Add one small task to get started.</div></div>
+          <div class="stat-row"><div class="stat"><strong id="plannerTaskCount">0</strong><span>Open tasks</span></div><div class="stat"><strong id="plannerHours">0h</strong><span>Time estimated</span></div><div class="stat"><strong id="plannerDone">0</strong><span>Completed</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="view" id="support">
+      <div class="welcome"><div><div class="eyebrow">Feature 02</div><h2>You can start exactly where you are.</h2><p>This demo offers supportive prompts and practical next steps. It is not a live AI or a substitute for a counsellor.</p></div><div class="welcome-emoji">💜</div></div>
+      <div class="grid">
+        <article class="card span-8"><div class="card-head"><div><h2>Supportive conversation</h2><div class="muted">Choose a prompt or type what's bothering you.</div></div><span class="pill">DEMO</span></div>
+          <div class="chatbox" id="chatbox" aria-live="polite"><div class="bubble bot">Hi. I'm glad you came here. What's feeling hardest right now? We can take it one step at a time.</div></div>
+          <div class="quick-prompts"><button class="plain" data-prompt="I'm scared about my exams.">Exam fear</button><button class="plain" data-prompt="I have too much work to do.">Too much work</button><button class="plain" data-prompt="I feel left behind compared to others.">Comparing myself</button><button class="plain" data-prompt="I don't know why I'm stressed.">Not sure why</button></div>
+          <form class="chat-input" id="chatForm"><input id="chatMessage" maxlength="500" placeholder="What's on your mind?" aria-label="Your message" required><button class="primary">Send</button></form>
+        </article>
+        <article class="card span-4"><div class="icon-box">🧭</div><h2 style="margin-top:14px">A small next step</h2><p class="muted">You don't need to fix everything in one go. Pick the option that feels useful now.</p><div style="display:grid;gap:9px;margin-top:18px"><button class="secondary" data-go="planner">Make a study plan</button><button class="secondary" data-go="calm">Try a breathing break</button><button class="secondary" data-go="wellbeing">Check in with myself</button></div><div class="notice" style="margin-top:18px">If things feel too heavy, consider reaching out to a trusted friend, family member, teacher or campus counsellor. If you may be in immediate danger, contact local emergency services.</div></article>
+      </div>
+    </section>
+
+    <section class="view" id="calm">
+      <div class="welcome"><div><div class="eyebrow">Feature 03</div><h2>Give yourself a gentle reset.</h2><p>You don't have to feel perfectly calm. Just give yourself a moment to slow down and notice the present.</p></div><div class="welcome-emoji">🌿</div></div>
+      <div class="grid">
+        <article class="card span-6 center"><div class="icon-box" style="margin:0 auto 12px">🌬️</div><h2>Guided breathing</h2><p class="muted">Breathe gently. Don't force deep breaths; stop if you feel uncomfortable.</p>
+          <div class="breath-circle" id="breathCircle"><span id="breathText">Ready<br><small>when you are</small></span></div>
+          <div id="breathStatus" class="muted" style="margin-bottom:14px">Try 4 slow rounds at your own pace.</div><button class="primary" id="breathButton">Start breathing</button> <button class="plain" id="breathStop">Stop</button>
+        </article>
+        <article class="card span-6"><div class="icon-box" style="background:var(--mint)">🍃</div><h2 style="margin-top:14px">5–4–3–2–1 grounding</h2><p class="muted">Bring your attention to what's around you, without judging what you notice.</p>
+          <div id="groundingSteps" style="display:grid;gap:10px;margin:18px 0">
+            <label class="task"><input type="checkbox"><span class="task-info"><span class="task-name">5 things you can see</span></span></label>
+            <label class="task"><input type="checkbox"><span class="task-info"><span class="task-name">4 things you can feel</span></span></label>
+            <label class="task"><input type="checkbox"><span class="task-info"><span class="task-name">3 things you can hear</span></span></label>
+            <label class="task"><input type="checkbox"><span class="task-info"><span class="task-name">2 things you can smell</span></span></label>
+            <label class="task"><input type="checkbox"><span class="task-info"><span class="task-name">1 thing you can taste or appreciate</span></span></label>
+          </div><button class="secondary" id="resetGrounding">Reset exercise</button>
+        </article>
+        <article class="card span-12"><h2>A kind reminder</h2><p class="muted" style="font-size:17px">“I am allowed to pause. My worth is not measured by how much I finish today.”</p><button class="plain" id="newReminder">Show another reminder ↻</button><span id="reminderText" class="muted" style="margin-left:10px"></span></article>
+      </div>
+    </section>
+
+    <section class="view" id="wellbeing">
+      <div class="welcome"><div><div class="eyebrow">Feature 04</div><h2>Notice your patterns, gently.</h2><p>Record how you feel and what might be contributing. Over time, this can help you reflect on what supports you.</p></div><div class="welcome-emoji">🌼</div></div>
+      <div class="grid">
+        <article class="card span-6"><h2>Today's check-in</h2><p class="muted">Choose the mood that feels closest right now.</p><div class="mood-options" id="wellbeingMoods"><button class="mood" data-mood="1">😣<small>Low</small></button><button class="mood" data-mood="2">😟<small>Stressed</small></button><button class="mood" data-mood="3">😐<small>Okay</small></button><button class="mood" data-mood="4">🙂<small>Good</small></button><button class="mood" data-mood="5">😄<small>Great</small></button></div>
+          <div class="field"><label for="stressSource">What's contributing today? (optional)</label><select id="stressSource"><option>Choose one</option><option>Exams or assignments</option><option>Sleep or tiredness</option><option>Family or relationships</option><option>Money or future worries</option><option>Loneliness or comparison</option><option>Not sure</option><option>Something positive</option></select></div>
+          <div class="field"><label for="journalNote">A few words for yourself (optional)</label><textarea id="journalNote" rows="3" maxlength="400" placeholder="What do you need today?"></textarea></div><button class="primary" id="saveWellbeing">Save reflection</button>
+        </article>
+        <article class="card span-6"><div class="card-head"><div><h2>Your recent check-ins</h2><div class="muted">A personal reflection, not a clinical score.</div></div><span class="pill">LOCAL DEMO</span></div><div id="historyBars" class="history-bars"><div class="empty" style="width:100%">Your saved check-ins will appear here.</div></div><div class="notice">Mood can change for many reasons. This chart shows only what you recorded; it cannot explain or diagnose the cause.</div><div id="reflectionList" style="display:grid;gap:9px;margin-top:14px"></div></article>
+      </div>
+    </section>
+    <div class="footer">MindSpace student project prototype · Demo data stays in this page session and is not sent to a server.</div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
